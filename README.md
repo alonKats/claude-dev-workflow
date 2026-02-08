@@ -31,41 +31,46 @@ A portable, multi-developer coordination workflow for [Claude Code](https://clau
 4. `/complete-task` releases locks and updates the progress checklist
 5. `/sync` compares your branch against other devs' locked files to catch conflicts early
 
-## Install
-
-### Quick Install
+## Install Into an Existing Project
 
 ```bash
-git clone https://github.com/alonKats/claude-dev-workflow.git
-cd claude-dev-workflow
-./install.sh /path/to/your/project
+# 1. Clone the workflow repo to a temp location
+git clone https://github.com/alonKats/claude-dev-workflow.git /tmp/claude-dev-workflow
+
+# 2. Run the installer, pointing at your project
+/tmp/claude-dev-workflow/install.sh /path/to/your-project
+
+# 3. Clean up
+rm -rf /tmp/claude-dev-workflow
 ```
 
-The installer will prompt for:
+The interactive installer will prompt for:
 - Project name and description
 - Developer names
 - Tech stack (optional)
 - Code standards (optional)
 - Key directories (optional)
 
-### Manual Install
+It copies slash commands, coordination docs, permissions, and a customized `CLAUDE.md` into your project. **Existing files are never overwritten** — if a file already exists, it's skipped (or written to `CLAUDE.md.new`).
 
-Copy these into your project:
+### After the installer runs
+
+1. **Review `CLAUDE.md`** — tweak anything the installer generated
+2. **Fill in `docs/progress.md`** — replace the example phases/tasks with your actual work breakdown
+3. **Update `docs/dev-log.md`** — add your project's shared files to the table
+4. **Commit** — add the new workflow files to your project repo
+
+### Manual Install (alternative)
+
+If you prefer to copy files yourself:
 
 ```
 templates/.claude/commands/*.md  →  .claude/commands/
 templates/.claude/settings.local.json  →  .claude/settings.local.json
 templates/docs/dev-log.md  →  docs/dev-log.md
 templates/docs/progress.md  →  docs/progress.md
-templates/CLAUDE.md  →  CLAUDE.md  (edit placeholders)
+templates/CLAUDE.md  →  CLAUDE.md  (edit {{placeholders}})
 ```
-
-## After Installing
-
-1. **Edit `CLAUDE.md`** — fill in `{{placeholders}}` if you did manual install, or review the generated file
-2. **Edit `docs/progress.md`** — replace the example phases/tasks with your actual work breakdown
-3. **Edit `docs/dev-log.md`** — add your shared files table
-4. **Commit** — add the workflow files to your project repo
 
 ## Recommended Plugins
 
