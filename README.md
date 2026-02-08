@@ -36,7 +36,7 @@ A portable, multi-developer coordination workflow for [Claude Code](https://clau
 ### Quick Install
 
 ```bash
-git clone https://github.com/YOUR_USER/claude-dev-workflow.git
+git clone https://github.com/alonKats/claude-dev-workflow.git
 cd claude-dev-workflow
 ./install.sh /path/to/your/project
 ```
